@@ -15,14 +15,6 @@
 	<name>ecommerce</name>
 	<description>Starter code for eCommerce project with Spring Boot</description>
 
-	<repositories>
-		<repository>
-			<id>splunk-artifactory</id>
-			<name>Splunk Releases</name>
-			<url>https://splunk.artifactoryonline.com/artifactory/ext-releases-local</url>
-		</repository>
-	</repositories>
-
 	<properties>
 		<java.version>1.8</java.version>
     	<maven-jar-plugin.version>3.6.3</maven-jar-plugin.version>
@@ -36,22 +28,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>spring-boot-starter-logging</artifactId>
-					<groupId>org.springframework.boot</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.splunk.logging/splunk-library-javalogging -->
-		<dependency>
-			<groupId>com.splunk.logging</groupId>
-			<artifactId>splunk-library-javalogging</artifactId>
-			<version>1.8.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
