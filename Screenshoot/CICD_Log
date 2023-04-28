@@ -1,0 +1,173 @@
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Eco
+The recommended git tool is: NONE
+using credential 514f1d5a-c56a-4deb-b12f-127db0e40a67
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Eco/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/cunhuvan/udacityProject4.git # timeout=10
+Fetching upstream changes from https://github.com/cunhuvan/udacityProject4.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.36.2'
+using GIT_SSH to set credentials 
+[INFO] Currently running in a labeled security context
+ > /usr/bin/chcon --type=ssh_home_t /var/jenkins_home/workspace/Eco@tmp/jenkins-gitclient-ssh14321863651891301398.key
+Verifying host key using known hosts file
+You're using 'Known hosts file' strategy to verify ssh host keys, but your known_hosts file does not exist, please go to 'Manage Jenkins' -> 'Configure Global Security' -> 'Git Host Key Verification Configuration' and configure host key verification.
+ > git fetch --tags --force --progress -- https://github.com/cunhuvan/udacityProject4.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 2d7ae6bbd96936f8cb0b2f2721d329c44c26d8d2 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 2d7ae6bbd96936f8cb0b2f2721d329c44c26d8d2 # timeout=10
+Commit message: "Delete log4j2-spring.xml"
+ > git rev-list --no-walk 2d7ae6bbd96936f8cb0b2f2721d329c44c26d8d2 # timeout=10
+Unpacking https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.5/apache-maven-3.8.5-bin.zip to /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Apache_Maven_3.8.5 on Jenkins
+[Eco] $ /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Apache_Maven_3.8.5/bin/mvn -f starter_code/pom.xml clean package -Dskiptests
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.udacity:ecommerce >------------------------
+[INFO] Building ecommerce 0.0.1
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ ecommerce ---
+[INFO] Deleting /var/jenkins_home/workspace/Eco/starter_code/target
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.6:prepare-agent (default) @ ecommerce ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.6/org.jacoco.agent-0.8.6-runtime.jar=destfile=/var/jenkins_home/workspace/Eco/starter_code/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ ecommerce ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ ecommerce ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to /var/jenkins_home/workspace/Eco/starter_code/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ ecommerce ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/Eco/starter_code/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ ecommerce ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to /var/jenkins_home/workspace/Eco/starter_code/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ ecommerce ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.udacity.ecommerce.OrderControllerTest
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/root/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/root/.m2/repository/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+03:39:46.849 [main] INFO com.udacity.ecommerce.controllers.OrderController - OrderController | submit | Success from username : userName
+03:39:46.903 [main] WARN com.udacity.ecommerce.controllers.OrderController - OrderController | submit | Missing username.
+03:39:46.904 [main] WARN com.udacity.ecommerce.controllers.OrderController - OrderController | getOrdersForUser | Missing username.
+03:39:46.906 [main] WARN com.udacity.ecommerce.controllers.OrderController - OrderController | submit | Missing username.
+03:39:46.915 [main] INFO com.udacity.ecommerce.controllers.OrderController - OrderController | submit | Success from username : userName
+03:39:46.915 [main] INFO com.udacity.ecommerce.controllers.OrderController - OrderController | getOrdersForUser | Order listed from username : userName
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.807 s - in com.udacity.ecommerce.OrderControllerTest
+[INFO] Running com.udacity.ecommerce.CartControllerTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.131 s - in com.udacity.ecommerce.CartControllerTest
+[INFO] Running com.udacity.ecommerce.ItemControllerTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in com.udacity.ecommerce.ItemControllerTest
+[INFO] Running com.udacity.ecommerce.UserControllerTest
+03:39:47.219 [main] INFO com.udacity.ecommerce.controllers.UserController - UserController | findByUsername | User Found. username : userName
+03:39:47.221 [main] INFO com.udacity.ecommerce.controllers.UserController - UserController | findByUsername | User Not Found. username : userName
+03:39:47.222 [main] INFO com.udacity.ecommerce.controllers.UserController - UserController | findById | User Not Found. id 1
+03:39:47.225 [main] INFO com.udacity.ecommerce.controllers.UserController - UserController | findById | User Found. id 1
+03:39:47.233 [main] INFO com.udacity.ecommerce.controllers.UserController - UserController | CreateUser | Success: | username: userName
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 s - in com.udacity.ecommerce.UserControllerTest
+[INFO] Running com.udacity.ecommerce.SareetaApplicationTests
+03:39:47.300 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.302 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+03:39:47.317 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+03:39:47.381 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.udacity.ecommerce.SareetaApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+03:39:47.398 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.udacity.ecommerce.SareetaApplicationTests], using SpringBootContextLoader
+03:39:47.403 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.udacity.ecommerce.SareetaApplicationTests]: class path resource [com/udacity/ecommerce/SareetaApplicationTests-context.xml] does not exist
+03:39:47.404 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.udacity.ecommerce.SareetaApplicationTests]: class path resource [com/udacity/ecommerce/SareetaApplicationTestsContext.groovy] does not exist
+03:39:47.404 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.udacity.ecommerce.SareetaApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+03:39:47.407 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.udacity.ecommerce.SareetaApplicationTests]: SareetaApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+03:39:47.490 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.660 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/jenkins_home/workspace/Eco/starter_code/target/classes/com/udacity/ecommerce/SareetaApplication.class]
+03:39:47.662 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.udacity.ecommerce.SareetaApplication for test class com.udacity.ecommerce.SareetaApplicationTests
+03:39:47.851 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.udacity.ecommerce.SareetaApplicationTests]: using defaults.
+03:39:47.852 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+03:39:47.883 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4d1f168, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9e4388d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@28532753, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@21399e53, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2a6871ad, org.springframework.test.context.transaction.TransactionalTestExecutionListener@260043d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3338d29d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5e1e19af, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3792fed8, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@35d145fb, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4088c5e6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6e757f39]
+03:39:47.887 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.888 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.889 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.889 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.889 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.890 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.895 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@75d61b62 testClass = SareetaApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@74159dc9 testClass = SareetaApplicationTests, locations = '{}', classes = '{class com.udacity.ecommerce.SareetaApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7ec5aad, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3c98981e, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5909285b, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@552088cc], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+03:39:47.896 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.896 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.udacity.ecommerce.SareetaApplicationTests]
+03:39:47.932 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.5.RELEASE)
+
+2023-04-28 03:39:48.660  INFO 2205 --- [           main] c.u.ecommerce.SareetaApplicationTests    : Starting SareetaApplicationTests on b8a3d601e492 with PID 2205 (started by root in /var/jenkins_home/workspace/Eco/starter_code)
+2023-04-28 03:39:48.663  INFO 2205 --- [           main] c.u.ecommerce.SareetaApplicationTests    : No active profile set, falling back to default profiles: default
+2023-04-28 03:39:50.149  INFO 2205 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2023-04-28 03:39:50.343  INFO 2205 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 173ms. Found 4 repository interfaces.
+2023-04-28 03:39:51.576  INFO 2205 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$86198d05] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-04-28 03:39:52.035  INFO 2205 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-28 03:39:52.533  INFO 2205 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-28 03:39:52.666  INFO 2205 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2023-04-28 03:39:52.828  INFO 2205 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2023-04-28 03:39:52.831  INFO 2205 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2023-04-28 03:39:52.921  INFO 2205 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2023-04-28 03:39:53.215  INFO 2205 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-04-28 03:39:54.644  INFO 2205 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-28 03:39:56.047  WARN 2205 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-28 03:39:56.235  INFO 2205 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f0c70e8, org.springframework.security.web.context.SecurityContextPersistenceFilter@4d97da72, org.springframework.security.web.header.HeaderWriterFilter@7e6fbc5c, org.springframework.web.filter.CorsFilter@3eb0700d, org.springframework.security.web.authentication.logout.LogoutFilter@738fe6bc, com.udacity.ecommerce.security.JWTAuthenticationFilter@202320b4, com.udacity.ecommerce.security.JWTAuthenticationVerificationFilter@5d47c417, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e65955e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@649bb6ec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41d06467, org.springframework.security.web.session.SessionManagementFilter@17b1fb46, org.springframework.security.web.access.ExceptionTranslationFilter@21ea7967, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5ba1e513]
+2023-04-28 03:39:56.839  INFO 2205 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-04-28 03:39:57.209  INFO 2205 --- [           main] c.u.ecommerce.SareetaApplicationTests    : Started SareetaApplicationTests in 9.261 seconds (JVM running for 13.068)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.995 s - in com.udacity.ecommerce.SareetaApplicationTests
+2023-04-28 03:39:57.280  INFO 2205 --- [       Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2023-04-28 03:39:57.282  INFO 2205 --- [       Thread-3] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-04-28 03:39:57.290  INFO 2205 --- [       Thread-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-28 03:39:57.313  INFO 2205 --- [       Thread-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.6:report (generate-code-coverage-report) @ ecommerce ---
+[INFO] Loading execution data file /var/jenkins_home/workspace/Eco/starter_code/target/jacoco.exec
+[INFO] Analyzed bundle 'ecommerce' with 16 classes
+[INFO] 
+[INFO] --- maven-war-plugin:3.2.2:war (default-war) @ ecommerce ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [ecommerce] in [/var/jenkins_home/workspace/Eco/starter_code/target/ecommerce-0.0.1]
+[INFO] Processing war project
+[INFO] Webapp assembled in [136 msecs]
+[INFO] Building war: /var/jenkins_home/workspace/Eco/starter_code/target/ecommerce-0.0.1.war
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.1.5.RELEASE:repackage (repackage) @ ecommerce ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.472 s
+[INFO] Finished at: 2023-04-28T03:40:00Z
+[INFO] ------------------------------------------------------------------------
+[DeployPublisher][INFO] Attempting to deploy 1 war file(s)
+[DeployPublisher][INFO] Deploying /var/jenkins_home/workspace/Eco/starter_code/target/ecommerce-0.0.1.war to container Tomcat 9.x Remote with context myApp
+  [/var/jenkins_home/workspace/Eco/starter_code/target/ecommerce-0.0.1.war] is not deployed. Doing a fresh deployment.
+  Deploying [/var/jenkins_home/workspace/Eco/starter_code/target/ecommerce-0.0.1.war]
+Finished: SUCCESS
