@@ -219,7 +219,7 @@ jobs:
                 curl https://kvdb.io/WrDs1eVRyWbn5fAepwZ68s/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
               fi
         - revert-migrations:
-          id: ${CIRCLE_WORKFLOW_ID:0:7}
+            id: ${CIRCLE_WORKFLOW_ID:0:7}
 workflows:
   default:
     jobs:
