@@ -140,7 +140,9 @@ jobs:
       - checkout
       - run:
           name: Install tar and gzip
-          command: yum install -y tar gzip
+          command: |
+            yum install -y tar gzip
+            cat ansible --version
       - run:
           name: Ensure back-end infrastructure exists
           command: |
