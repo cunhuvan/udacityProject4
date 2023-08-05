@@ -256,7 +256,7 @@ jobs:
             echo "API_URL = ${API_URL}"
             echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
             cat frontend/.env
-            curl https://kvdb.io/WrDs1eVRyWbn5fAepwZ68s/API_URL  -d '$API_URL'
+            curl https://kvdb.io/WrDs1eVRyWbn5fAepwZ68s/API_URL  -d '${API_URL}'
       - run:
           name: Deploy frontend objects
           command: |
@@ -340,10 +340,8 @@ jobs:
             fi
       - destroy-environment:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
-          when: on_fail
       - revert-migrations:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
-          when: on_fail
 workflows:
   default:
     jobs:
