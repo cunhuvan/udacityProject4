@@ -1,5 +1,16 @@
 version: 2.1
 
+executors:
+  node-image:
+    docker:
+      - image: circleci/node:13.8.0
+  python-image:
+    docker:
+      - image: python:3.10.12-alpine
+  aws-image:
+    docker:
+      - image: amazon/aws-cli
+
 commands:
   destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
@@ -40,8 +51,7 @@ commands:
             
 jobs:
   build-frontend:
-    docker:
-      - image: circleci/node:13.8.0
+    executor: node-image
     steps:
       - checkout
       - restore_cache:
@@ -57,8 +67,7 @@ jobs:
           key: frontend-build
 
   build-backend:
-    docker:
-      - image: circleci/node:13.8.0
+    executor: node-image
     steps:
       - checkout
       - restore_cache:
@@ -74,8 +83,7 @@ jobs:
           key: backend-build
 
   test-frontend:
-    docker:
-      - image: circleci/node:13.8.0
+    executor: node-image
     steps:
       - checkout
       - restore_cache:
@@ -88,8 +96,7 @@ jobs:
             npm run test
                 
   test-backend:
-    docker:
-      - image: circleci/node:13.8.0
+    executor: node-image
     steps:
       - checkout      
       - restore_cache:
@@ -102,8 +109,7 @@ jobs:
             npm run test
   
   scan-frontend:
-    docker:
-      - image: circleci/node:13.8.0
+    executor: node-image
     steps:
       - checkout      
       - restore_cache:
@@ -118,8 +124,7 @@ jobs:
             npm audit --audit-level=critical
 
   scan-backend:
-    docker:
-      - image: circleci/node:13.8.0
+    executor: node-image
     steps:
       - checkout      
       - restore_cache:
@@ -134,8 +139,7 @@ jobs:
             npm audit --audit-level=critical
   
   deploy-infrastructure:
-    docker:
-      - image: amazon/aws-cli
+    executor: aws-image
     steps:
       - checkout
       - run:
@@ -175,8 +179,7 @@ jobs:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
 
   configure-infrastructure:
-    docker:
-      - image: python:3.10.12-alpine
+    executor: python-image
     steps:
       - checkout
       - add_ssh_keys:
@@ -202,8 +205,7 @@ jobs:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
 
   run-migrations:
-      docker:
-        - image: circleci/node:13.8.0
+      executor: node-image
       steps:
         - checkout
         - attach_workspace:
@@ -234,8 +236,7 @@ jobs:
             id: ${CIRCLE_WORKFLOW_ID:0:7}
 
   deploy-frontend:
-    docker:
-      - image: circleci/node:13.8.0
+    executor: node-image
     steps:
       - checkout
       - attach_workspace:
@@ -278,8 +279,7 @@ jobs:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
 
   deploy-backend:
-    docker:
-      - image: python:3.9.0-alpine
+    executor: python-image
     steps:
       - checkout
       - add_ssh_keys:
@@ -306,8 +306,7 @@ jobs:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
 
   smoke-test:
-    docker:
-      - image: python:3.9.0-alpine
+    executor: python-image
     steps:
       - checkout
       - attach_workspace:
@@ -347,8 +346,7 @@ jobs:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
 
   cloudfront-update:
-    docker:
-      - image: amazon/aws-cli
+    executor: aws-image
     steps:
       - checkout
       - run:
