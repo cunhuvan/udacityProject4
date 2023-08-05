@@ -357,11 +357,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Store old WorkflowID in kvdb.io
+          working_directory: ./.circleci/files
           command: |
-            yum install -y tar gzip curl
-            curl -sL https://rpm.nodesource.com/setup_10.x | bash -
-            yum install -y nodejs
+            WorkflowID=$(aws cloudformation \
+              list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
+              --no-paginate --output text)
+            curl --insecure https://kvdb.io/WrDs1eVRyWbn5fAepwZ68s/workflowid_${CIRCLE_WORKFLOW_ID:0:7}  -d '${WorkflowID}'
       - run:
           name: Update cloudfront distribution
           working_directory: ./.circleci/files
@@ -371,10 +373,6 @@ jobs:
               --stack-name udapeople-cloudfront-production \
               --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID:0:7}" \
               --tags project=udapeople
-      - destroy-environment:
-          id: ${CIRCLE_WORKFLOW_ID:0:7}
-      - revert-migrations:
-          id: ${CIRCLE_WORKFLOW_ID:0:7}
   
 workflows:
   default:
@@ -418,5 +416,8 @@ workflows:
           requires:
             - deploy-frontend
             - deploy-backend
+      - cloudfront-update:
+          requires:
+            - smoke-test
       
             
