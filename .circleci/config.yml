@@ -230,11 +230,13 @@ jobs:
               npm install
               ## Run and save the migration output
               npm run migrations > migrations_dump.txt
+              cat migrations_dump.txt
         - run:
             name: Send migration results to kvdb.io
             command: |
               if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
               then
+                echo "Send migration results to kvdb.io"
                 curl --insecure https://kvdb.io/WrDs1eVRyWbn5fAepwZ68s/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
               fi
         - revert-migrations:
@@ -369,6 +371,8 @@ jobs:
               --stack-name udapeople-cloudfront-production \
               --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID:0:7}" \
               --tags project=udapeople
+      - destroy-environment:
+          id: ${CIRCLE_WORKFLOW_ID:0:7}
       - revert-migrations:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
   
