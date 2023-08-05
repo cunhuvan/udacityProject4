@@ -85,6 +85,7 @@ jobs:
           root: .
           paths:
             - backend/dist
+            - backend/node_modules
 
   test-frontend:
     executor: node-image
