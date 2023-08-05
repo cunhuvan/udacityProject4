@@ -235,7 +235,7 @@ jobs:
             command: |
               if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
               then
-                curl https://kvdb.io/WrDs1eVRyWbn5fAepwZ68s/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+                curl --insecure https://kvdb.io/WrDs1eVRyWbn5fAepwZ68s/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
               fi
         - revert-migrations:
             id: ${CIRCLE_WORKFLOW_ID:0:7}
