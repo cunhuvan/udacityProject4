@@ -142,7 +142,6 @@ jobs:
           name: Install tar and gzip
           command: |
             yum install -y tar gzip
-            ansible --version
       - run:
           name: Ensure back-end infrastructure exists
           command: |
@@ -197,6 +196,7 @@ jobs:
             pwd &&
             ls -la
             cat inventory.txt
+            ansible --version
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
