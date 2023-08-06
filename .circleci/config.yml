@@ -39,14 +39,9 @@ commands:
           name: Revert migrations
           working_directory: ./backend
           command: |
-            SUCCESS=$(curl --insecure https://kvdb.io/WrDs1eVRyWbn5fAepwZ68s/migration_<< parameters.id >>)
-            echo $SUCCESS
-            if [[ $SUCCESS == 1 ]]
-            then
-              pwd
-              ls -la
-              npm run migrations:revert
-            fi
+            pwd
+            ls -la
+            npm run migrations:revert
           when: on_fail
             
 jobs:
