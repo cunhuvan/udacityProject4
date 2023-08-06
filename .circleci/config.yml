@@ -39,9 +39,8 @@ commands:
           name: Revert migrations
           working_directory: ./backend
           command: |
-            pwd
-            ls -la
-            npm run migrations:revert
+            npm install
+					  npm run migration:revert
           when: on_fail
             
 jobs:
