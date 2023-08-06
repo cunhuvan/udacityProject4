@@ -40,7 +40,7 @@ commands:
           working_directory: ./backend
           command: |
             npm install
-					  npm run migration:revert
+            npm run migration:revert
           when: on_fail
             
 jobs:
