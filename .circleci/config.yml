@@ -214,6 +214,10 @@ jobs:
             cat inventory.txt
             ansible --version
             ansible-playbook -i inventory.txt configure-server.yml
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/backend
       - destroy-environment:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
 
