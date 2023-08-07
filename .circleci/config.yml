@@ -39,7 +39,6 @@ commands:
           name: Revert migrations
           working_directory: ./backend
           command: |
-            npm install
             npm run migrations:revert
           when: on_fail
             
@@ -186,12 +185,6 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Install dependencies
-          working_directory: ./.circleci/ansible
-          command: |
-            apk add --update ansible
-            ansible --version
-      - run:
           name: config env
           command: |
             # add environment variables to server
@@ -206,6 +199,12 @@ jobs:
             echo TYPEORM_PORT=$TYPEORM_PORT >> backend/.env
             echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> backend/.env
             cat backend/.env
+      - run:
+          name: Install dependencies
+          working_directory: ./.circleci/ansible
+          command: |
+            apk add --update ansible
+            ansible --version
       - run:
           name: Configure server
           working_directory: ./.circleci/ansible
@@ -355,8 +354,8 @@ jobs:
             else
               return 1
             fi
-      # - destroy-environment:
-      #     id: ${CIRCLE_WORKFLOW_ID:0:7}
+      - destroy-environment:
+          id: ${CIRCLE_WORKFLOW_ID:0:7}
       - revert-migrations:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
 
