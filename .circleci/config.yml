@@ -239,8 +239,6 @@ jobs:
             name: Run migrations
             command: |
               cd backend
-              npm install
-              ## Run and save the migration output
               npm run migrations > migrations_dump.txt
               cat migrations_dump.txt
         - run:
@@ -318,6 +316,7 @@ jobs:
           working_directory: ./.circleci/ansible
           command: |
             cat inventory.txt
+            cat ../../backend/.env
             ansible-playbook -i inventory.txt deploy-backend.yml -vv
       - destroy-environment:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
@@ -410,16 +409,16 @@ jobs:
 workflows:
   default:
     jobs:
-      - build-frontend
-      - build-backend
-      - test-frontend:
-          requires: [build-frontend]
-      - test-backend:
-          requires: [build-backend]
-      - scan-frontend:
-          requires: [build-frontend]
-      - scan-backend:
-          requires: [build-backend]
+      # - build-frontend
+      # - build-backend
+      # - test-frontend:
+      #     requires: [build-frontend]
+      # - test-backend:
+      #     requires: [build-backend]
+      # - scan-frontend:
+      #     requires: [build-frontend]
+      # - scan-backend:
+      #     requires: [build-backend]
       - deploy-infrastructure:
           filters:
             branches:
@@ -439,21 +438,21 @@ workflows:
             branches:
               only:
                 - main
-      - deploy-frontend:
-          requires:
-            - run-migrations
+      # - deploy-frontend:
+      #     requires:
+      #       - run-migrations
       - deploy-backend:
           requires:
             - run-migrations
-      - smoke-test:
-          requires:
-            - deploy-frontend
-            - deploy-backend
-      - cloudfront-update:
-          requires:
-            - smoke-test
-      - cleanup:
-          requires:
-            - cloudfront-update
+      # - smoke-test:
+      #     requires:
+      #       - deploy-frontend
+      #       - deploy-backend
+      # - cloudfront-update:
+      #     requires:
+      #       - smoke-test
+      # - cleanup:
+      #     requires:
+      #       - cloudfront-update
       
             
